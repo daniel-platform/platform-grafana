@@ -1,0 +1,26 @@
+name: grafana
+type: python:3.6
+disk: 2048
+
+relationships:
+    datadb: "influxdata:influxdb"
+    confdb: "mysqlconfig:mysql"
+    sessdb: "redissession:redis"
+
+mounts:
+    "data": "shared:files/data"
+
+web:
+    upstream:
+        socket_family: tcp
+        protocol: http
+    commands:
+        start: "sh ./prestart.sh; sh ./start.sh"
+    locations:
+        /:
+            root: public
+
+hooks:
+    build: "bash ${PLATFORM_APP_DIR}/build.sh"
+    deploy: "sh ${PLATFORM_APP_DIR}/deploy.sh"
+
