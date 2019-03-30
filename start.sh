@@ -36,6 +36,9 @@ REDIS_POOL_SIZE=100
 export GF_SESSION_PROVIDOR=redis
 export GF_SESSION_PROVIDER_CONFIG="addr=${REDIS_HOST}:${REDIS_PORT},pool_size=${REDIS_POOL_SIZE},db=grafana"
 
+# This ensures that the child process below gets stopped when Platform.sh kills this script.
+trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+
 # Start Grafana
 ${GRAFANA_HOME}/bin/grafana-server --homepath ${GRAFANA_HOME} --config ${CONFIG_PATH}/grafana.ini
 
