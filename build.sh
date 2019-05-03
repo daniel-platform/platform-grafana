@@ -5,8 +5,8 @@
 
 # Desired version can be set by means of an enviromental variable
 if [ -z "$GRAFANA_VERSION" ]; then 
-	# Default to Grafana 6.0.2
-	GRAFANA_VERSION=6.0.2; 
+	# Default to Grafana 6.1.6
+	GRAFANA_VERSION=6.1.6; 
 fi
 
 GRAFANA_DOWNLOAD_URI="https://s3-us-west-2.amazonaws.com/grafana-releases/release"

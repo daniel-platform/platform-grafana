@@ -6,9 +6,9 @@
 # Extract database configuration from enviroment
 INFLUXDB_USER=admin
 INFLUXDB_PASS=admin
-INFLUXDB_HOST=$(bin/json_env PLATFORM_RELATIONSHIPS datadb.influxdata.host)
-INFLUXDB_PORT=$(bin/json_env PLATFORM_RELATIONSHIPS datadb.influxdata.port)
-INFLUXDB_SCHEME=$(bin/json_env PLATFORM_RELATIONSHIPS datadb.influxdata.scheme)
+INFLUXDB_HOST=$(bin/discovery PLATFORM_RELATIONSHIPS datadb.influxdata.host)
+INFLUXDB_PORT=$(bin/discovery PLATFORM_RELATIONSHIPS datadb.influxdata.port)
+INFLUXDB_SCHEME=$(bin/discovery PLATFORM_RELATIONSHIPS datadb.influxdata.scheme)
 
 echo "Auto provisioning default datasource..."
 
