@@ -1,6 +1,6 @@
 # Grafana Example
 
-Automaticly deploys a fully functional copy of Grafana (currently at version 6.1.6) on Platform.sh.
+Automaticly deploys a fully functional copy of Grafana (currently at version 6.2.2) on Platform.sh.
 using a MySQL backend and with a default InfluxDB datasource named "Default".
 
 ## Instructions
