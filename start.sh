@@ -9,8 +9,8 @@ export GF_SMTP_HOST="$PLATFORM_SMTP_HOST:25"
 
 # HTTP Port
 export GF_SERVER_HTTP_PORT=$PORT
-export GF_SERVER_HTTP_DOMAIN=$(bin/pathfinder PLATFORM_ROUTES grafana | awk -F / '{print $3}' | uniq)
-export GF_SERVER_ROOT_URL=$(bin/pathfinder PLATFORM_ROUTES grafana | head -1)
+export GF_SERVER_HTTP_DOMAIN=$(bin/pathfinder PLATFORM_ROUTES $PLATFORM_APPLICATION_NAME | awk -F / '{print $3}' | uniq)
+export GF_SERVER_ROOT_URL=$(bin/pathfinder PLATFORM_ROUTES $PLATFORM_APPLICATION_NAME | head -1)
 
 # Data Directory
 export GF_PATHS_DATA="${DATA_PATH}"
@@ -40,5 +40,5 @@ export GF_SESSION_PROVIDER_CONFIG="addr=${REDIS_HOST}:${REDIS_PORT},pool_size=${
 trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
 
 # Start Grafana
-${GRAFANA_HOME}/bin/grafana-server --homepath ${GRAFANA_HOME} --config ${CONFIG_PATH}/grafana.ini
+exec ${GRAFANA_HOME}/bin/grafana-server --homepath ${GRAFANA_HOME} --config ${CONFIG_PATH}/grafana.ini
 
