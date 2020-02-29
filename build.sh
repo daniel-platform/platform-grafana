@@ -5,11 +5,11 @@
 
 # Desired version can be set by means of an enviromental variable
 if [ -z "$GRAFANA_VERSION" ]; then 
-	# Default to Grafana 6.2.5
-	GRAFANA_VERSION=6.2.5; 
+	# Default to Grafana 6.6.2
+	GRAFANA_VERSION=6.6.2; 
 fi
 
-GRAFANA_DOWNLOAD_URI="https://s3-us-west-2.amazonaws.com/grafana-releases/release"
+GRAFANA_DOWNLOAD_URI="https://dl.grafana.com/oss/release"
 GRAFANA_DL_ARCHIVE="grafana-${GRAFANA_VERSION}.linux-amd64.tar.gz"
 
 # Make directories
