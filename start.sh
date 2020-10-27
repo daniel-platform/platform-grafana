@@ -41,4 +41,3 @@ trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
 
 # Start Grafana
 exec ${GRAFANA_HOME}/bin/grafana-server --homepath ${GRAFANA_HOME} --config ${CONFIG_PATH}/grafana.ini
-

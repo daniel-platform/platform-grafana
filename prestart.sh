@@ -22,7 +22,7 @@ datasources:
     access: proxy
     database: default
     user: ${INFLUXDB_USER}
-    password: ${INFLUXDB_PASS}
+    secureJsonData:
+      password: ${INFLUXDB_PASS}
     url: ${INFLUXDB_SCHEME}://${INFLUXDB_HOST}:${INFLUXDB_PORT}
 EOF
-
