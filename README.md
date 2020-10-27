@@ -1,6 +1,6 @@
 # Grafana Example
 
-Automaticly deploys a fully functional copy of Grafana (currently at version 6.6.2) on Platform.sh.
+Automaticly deploys a fully functional copy of Grafana (currently at version 7.2.1) on Platform.sh.
 using a MySQL backend and with a default InfluxDB datasource named "Default".
 
 ## Instructions
@@ -24,10 +24,9 @@ Add them to `conf/provisioning/dashboards`.
 
 ## Additional Information
 
-In order to decode relationship and route information from enviroment 
-variables, this project uses the following pre-built (Debian) binaries 
+In order to decode relationship and route information from enviroment
+variables, this project uses the following pre-built (Debian) binaries
 located in the `bin` folder.
 
 - discovery: https://github.com/daniel-platform/discovery
 - pathfinder: https://github.com/daniel-platform/pathfinder
-
