@@ -1,9 +1,8 @@
 influxdata:
-    type: influxdb:1.7
+    type: influxdb:1.8
     disk: 1024
 mysqlconfig:
-    type: mysql:10.2
+    type: mysql:10.4
     disk: 1024
 redissession:
-    type: redis:3.2
-    
+    type: redis:6.0

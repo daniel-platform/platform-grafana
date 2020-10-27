@@ -4,9 +4,9 @@
 . ./header.inc
 
 # Desired version can be set by means of an enviromental variable
-if [ -z "$GRAFANA_VERSION" ]; then 
-	# Default to Grafana 6.6.2
-	GRAFANA_VERSION=6.6.2; 
+if [ -z "$GRAFANA_VERSION" ]; then
+	# Default to Grafana 7.2.1
+	GRAFANA_VERSION=7.2.1;
 fi
 
 GRAFANA_DOWNLOAD_URI="https://dl.grafana.com/oss/release"
@@ -15,6 +15,9 @@ GRAFANA_DL_ARCHIVE="grafana-${GRAFANA_VERSION}.linux-amd64.tar.gz"
 # Make directories
 mkdir -p $GRAFANA_HOME;
 mkdir -p ${CONFIG_PATH}/provisioning/datasources
+mkdir -p ${CONFIG_PATH}/provisioning/plugins
+mkdir -p ${CONFIG_PATH}/provisioning/notifiers
+mkdir -p ${CONFIG_PATH}/provisioning/dashboards
 mkdir -p bin
 
 # Download and Extract Grafana
@@ -34,4 +37,3 @@ wget --no-cookies --no-check-certificate -q -O bin/discovery ${DISCOVERY_DOWNLOA
 echo "Downloading ${PATHFINDER_DOWNLOAD_URI}"
 wget --no-cookies --no-check-certificate -q -O bin/pathfinder ${PATHFINDER_DOWNLOAD_URI}
 chmod +x bin/pathfinder bin/discovery
-

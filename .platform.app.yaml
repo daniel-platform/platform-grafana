@@ -8,14 +8,25 @@ relationships:
     sessdb: "redissession:redis"
 
 mounts:
-    "data": "shared:files/data"
+    'data':
+        source: local
+        source_path: data
+    'conf/provisioning/plugins':
+        source: local
+        source_path: plugins
+    'conf/provisioning/notifiers':
+        source: local
+        source_path: notifiers
+    'conf/provisioning/dashboards':
+        source: local
+        source_path: dashboards
 
 web:
     upstream:
         socket_family: tcp
         protocol: http
     commands:
-        start: "sh ./prestart.sh; sh ./start.sh"
+        start: "sh ./start.sh"
     locations:
         /:
             root: public
@@ -23,4 +34,3 @@ web:
 hooks:
     build: "bash ${PLATFORM_APP_DIR}/build.sh"
     deploy: "sh ${PLATFORM_APP_DIR}/deploy.sh"
-

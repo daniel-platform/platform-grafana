@@ -3,6 +3,30 @@
 # Load header
 . ./header.inc
 
+# Extract database configuration from enviroment
+INFLUXDB_USER=admin
+INFLUXDB_PASS=admin
+INFLUXDB_HOST=$(bin/discovery PLATFORM_RELATIONSHIPS datadb.influxdata.host)
+INFLUXDB_PORT=$(bin/discovery PLATFORM_RELATIONSHIPS datadb.influxdata.port)
+INFLUXDB_SCHEME=$(bin/discovery PLATFORM_RELATIONSHIPS datadb.influxdata.scheme)
+
+echo "Auto provisioning default datasource..."
+
+# Generate a datasource configuration for InfluxDB
+cat << EOF > ${AUTO_PROVISION_PATH}/default_datadb_influxdata.yaml
+apiVersion: 1
+
+datasources:
+  - name: Default
+    type: influxdb
+    access: proxy
+    database: default
+    user: ${INFLUXDB_USER}
+    secureJsonData:
+      password: ${INFLUXDB_PASS}
+    url: ${INFLUXDB_SCHEME}://${INFLUXDB_HOST}:${INFLUXDB_PORT}
+EOF
+
 # Setup Mail
 export GF_SMTP_ENABLED="true"
 export GF_SMTP_HOST="$PLATFORM_SMTP_HOST:25"
@@ -36,9 +60,5 @@ REDIS_POOL_SIZE=100
 export GF_SESSION_PROVIDOR=redis
 export GF_SESSION_PROVIDER_CONFIG="addr=${REDIS_HOST}:${REDIS_PORT},pool_size=${REDIS_POOL_SIZE},db=grafana"
 
-# This ensures that the child process below gets stopped when Platform.sh kills this script.
-trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
-
 # Start Grafana
 exec ${GRAFANA_HOME}/bin/grafana-server --homepath ${GRAFANA_HOME} --config ${CONFIG_PATH}/grafana.ini
-
