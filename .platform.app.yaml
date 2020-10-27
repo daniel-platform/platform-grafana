@@ -26,7 +26,7 @@ web:
         socket_family: tcp
         protocol: http
     commands:
-        start: "sh ./prestart.sh; sh ./start.sh"
+        start: "sh ./start.sh"
     locations:
         /:
             root: public

@@ -15,7 +15,7 @@ using a MySQL backend and with a default InfluxDB datasource named "Default".
 As per http://docs.grafana.org/administration/provisioning/#datasources, you can
 add more external datasources in `conf/provisioning/datasources`.
 
-If you wish to add more internal datasources, have a look at `build.sh` and `prestart.sh`
+If you wish to add more internal datasources, have a look at `build.sh` and `start.sh`
 
 ## Dashboards
 
