@@ -1,4 +1,6 @@
-# Grafana Example
+# Grafana template for Platform.sh
+
+<p align="center"><a href="https://console.platform.sh/projects/create-project/?template=https://github.com/vrobert78/platform-grafana&utm_campaign=deploy_on_platform?utm_medium=button&utm_source=affiliate_links&utm_content=https://github.com/vrobert78/platform-grafana" target="_blank" title="Deploy with Platform.sh"><img src="https://platform.sh/images/deploy/deploy-button-lg-blue.svg"></a></p>
 
 Automaticly deploys a fully functional copy of Grafana (currently at version 7.2.1) on Platform.sh.
 using a MySQL backend and with a default InfluxDB datasource named "Default".
